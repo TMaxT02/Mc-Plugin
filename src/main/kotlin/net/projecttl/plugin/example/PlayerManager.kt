@@ -1,39 +1,23 @@
-import org.hibernate.Session
-import org.hibernate.SessionFactory
-import java.lang.module.Configuration
+import com.demo.hibernate.entity.PlayerEntity
+import net.projecttl.plugin.example.utility.HibernateUtil
+import org.hibernate.*
 
+
+/**#################################################################
+ * @author ANICET ERIC KOUAME
+ * @Date: 20 mars 2017
+ * @Description:
+ * BookDao
+ * #################################################################
+ */
 class PlayerManager (){
-
-    fun getPlayerByUUID(uuid: String): PlayerEntity? {
-
-            // Konfiguration erstellen
-            val configuration = org.hibernate.cfg.Configuration().configure("hibernate.cfg.xml")
-
-            // SessionFactory erstellen
-            val sessionFactory: SessionFactory = configuration.buildSessionFactory()
-
-            // Neue Session öffnen
-            val session: Session = sessionFactory.openSession()
-
-            // Spieler anhand der ID aus der Datenbank abfragen
-            val playerId = 1 // Hier die ID des Spielers eintragen
-            val player = session.get(PlayerEntity::class.java, playerId)
-
-            if (player != null) {
-                // Spielerinformationen ausgeben
-                println("UUID: ${player.uuid}")
-                println("Rang: ${player.rang}")
-                println("Geld: ${player.geld}")
-                println("Infos: ${player.infos}")
-            } else {
-                println("Spieler nicht gefunden.")
-            }
-
-            // Session schließen
-            session.close()
-
-            // SessionFactory schließen
-            sessionFactory.close()
-        return player
+    fun getPlayer(): PlayerEntity {
+        val session: Session = HibernateUtil.session
+        val query = session.createQuery("from Book")
+        query.maxResults = 1
+        val players: List<PlayerEntity> = query.list() as List<PlayerEntity>
+        val player: PlayerEntity? = players.firstOrNull()
+        session.close()
+        return player!!
     }
 }
