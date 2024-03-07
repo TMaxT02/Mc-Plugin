@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 class JoinListener : Listener {
     @EventHandler
     fun joinMessage(event: PlayerJoinEvent) {
-        event.joinMessage(Component.text("Wilkommen Auf Azadun! ${event.player.name}"))
+        event.joinMessage(Component.text("Test123! ${event.player.name}"))
     }
     @EventHandler
     fun getPlayerInChache(event: PlayerJoinEvent) {
