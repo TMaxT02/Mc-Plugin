@@ -1,16 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-		<!DOCTYPE hibernate-configuration PUBLIC
-				"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-				"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-<session-factory>
-	<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-	<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-	<property name="hibernate.connection.username">system</property>
-	<property name="hibernate.connection.password">oracle</property>
-	<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-	<!-- <property name="hibernate.default_schema">anySchema</property> -->
-	<property name="show_sql">true</property>
-	<mapping class="net.projecttl.plugin.example.classes.PlayerDomain" />
-</session-factory>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/YOUR_DATABASE</property>
+        <property name="hibernate.connection.username">root</property>
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping class="com.demo.hibernate.entity.Book"/>
+
+    </session-factory>
 </hibernate-configuration>

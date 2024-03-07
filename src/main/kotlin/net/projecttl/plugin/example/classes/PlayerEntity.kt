@@ -1,22 +1,17 @@
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+/**
+ *
+ */
+package com.demo.hibernate.entity
 
-
+import java.io.Serializable
+import javax.persistence.*
 @Entity
-@Table(name = "player") // Tabellenname festlegen
-class PlayerEntity (
+@Table(name = "BOOK")
+class PlayerEntity : Serializable {
     @Id
-    @Column(name = "uuid") // Spaltenname festlegen
-    var uuid: Int,
-
-    @Column(name = "rang") // Spaltenname festlegen
-    var rang: String,
-
-    @Column(name = "geld") // Spaltenname festlegen
-    var geld: Int,
-
-    @Column(name = "infos") // Spaltenname festlegen
-    var infos: Int,
-)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id = 0
+    var title: String? = null
+    var author: String? = null
+    var price = 0.0
+}

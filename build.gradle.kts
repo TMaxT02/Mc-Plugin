@@ -26,10 +26,13 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
-    implementation("org.hibernate:hibernate-core:5.1.0.Final")
-    implementation("javax.activation:javax.activation-api:1.2.0")
-    implementation("com.sun.xml.bind:jaxb-impl:2.0.1")
-    implementation("jakarta.xml.bind:jakarta.xml.bind-api:4.0.0")
+
+    implementation("org.hibernate:hibernate-core:5.4.24.Final")
+    implementation("org.hibernate:hibernate-search-orm:5.4.0.Final")
+    implementation("mysql:mysql-connector-java:8.0.28")
+
+    implementation("org.glassfish.jaxb:jaxb-xjc:4.0.4")
+    implementation("com.sun.xml.bind:jaxb-impl:4.0.4")
     implementation("org.glassfish.jaxb:jaxb-runtime:4.0.4")
 }
 
